@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Psychic Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+  
 </head>
 <body>
     
@@ -15,11 +14,30 @@
         <p>Guess what letter I'm thinking of</p>
         <p>Wins:</p>
         <p>Losses:</p>
-        <p>Guesses Left:</p>
+        <p id="guessesLeft">Guesses Left: </p>
         <p>Your guesss so far:</p>
     </div>
 
-    <script type="script/javascript">
+    <script type="text/javascript">
+// create an array that consists of all the letters in the alphabet
+
+    let letters = [ 'a', 'b', 'c' ];
+    let computerGuess = 'a';
+    let userGuess = document.createElement('span');
+    let guessesLeft = document.getElementById('guessesLeft');
+
+    guessesLeft.appendChild(userGuess);
+   
+
+
+// make sure the strings of the array are equal to the keyboard presses
+
+
+
+//create a variable that allows the computer to guess a random letter; for now create that letter
+
+//when user presses a letter on the keyboard, it will match up to one of the letters in the array; if the letter matches in the array, it will print on the screen. User wins. The game resets. If it doesn't it will go into the guesses so far pile;  only 9 guesses can be in there
+
     
     </script>
 </body>

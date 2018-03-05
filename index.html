@@ -25,11 +25,16 @@
     let computerGuess = 'a';
     let userGuess = document.createElement('span');
     let guessesLeft = document.getElementById('guessesLeft');
+    let userKey = userGuess.keypress
+
+    let winCounter = 0;
 
     guessesLeft.appendChild(userGuess);
    
-
-
+    document.onkeyup = function(event) {
+        userGuess.textContent = event.key;
+      };
+   
 // make sure the strings of the array are equal to the keyboard presses
 
 
@@ -37,6 +42,12 @@
 //create a variable that allows the computer to guess a random letter; for now create that letter
 
 //when user presses a letter on the keyboard, it will match up to one of the letters in the array; if the letter matches in the array, it will print on the screen. User wins. The game resets. If it doesn't it will go into the guesses so far pile;  only 9 guesses can be in there
+
+if (letters.length === 'a') {
+    console.log('You win!');
+    winCounter++;
+
+}
 
     
     </script>

@@ -12,27 +12,57 @@
     <h1>The Psychic Game</h1>
     <div>
         <p>Guess what letter I'm thinking of</p>
-        <p>Wins:</p>
+        <p id="win-point">Wins: </p>
         <p>Losses:</p>
-        <p id="guessesLeft">Guesses Left: </p>
-        <p>Your guesss so far:</p>
+        <p>Guesses Left: </p>
+        <p id="guessesLeft">Your guesses so far: </p>
     </div>
 
     <script type="text/javascript">
 // create an array that consists of all the letters in the alphabet
 
-    let letters = [ 'a', 'b', 'c' ];
-    let computerGuess = 'a';
+    let letters = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
     let userGuess = document.createElement('span');
     let guessesLeft = document.getElementById('guessesLeft');
     let userKey = userGuess.keypress
 
-    let winCounter = 0;
+    let timer = 9;
+    let win = 0;
+    let lose = 0;
 
     guessesLeft.appendChild(userGuess);
    
+   //event occurs when a key is pressed
     document.onkeyup = function(event) {
-        userGuess.textContent = event.key;
+
+        //store key press in variable
+        let k = event.key;
+
+      
+
+        //computer produces a random letter everytime a key is pressed
+        let computerGuess =  letters[Math.floor(Math.random() * letters.length)];
+
+        if (k === computerGuess) {
+            console.log("Yeah baby!");
+            let winNum = document.createElement('span');
+            let winPoints = document.getElementById('win-point');
+            winPoints.appendChild(winNum);
+            winNum.innerHTML = win;
+            return win++;
+
+        } else {
+            console.log("damn");
+              //prints out userguess in the guesses left span tag
+            userGuess.textContent = k;
+            let newWords = k + ', ';
+            userGuess.innerHTML = newWords;
+            lose++;
+            timer--;
+        }
+
+      
       };
    
 // make sure the strings of the array are equal to the keyboard presses

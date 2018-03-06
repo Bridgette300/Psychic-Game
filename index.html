@@ -13,7 +13,7 @@
     <div>
         <p>Guess what letter I'm thinking of</p>
         <p id="win-point">Wins: </p>
-        <p>Losses:</p>
+        <p id="lose-point">Losses: </p>
         <p>Guesses Left: </p>
         <p id="guessesLeft">Your guesses so far: </p>
     </div>
@@ -26,11 +26,18 @@
     let winNum = document.createElement('span');
             let winPoints = document.getElementById('win-point');
             winPoints.appendChild(winNum);
+
+            let loseNum = document.createElement('span');
+            let losePoints = document.getElementById('lose-point');
+            losePoints.appendChild(loseNum);          
  
 
-    let timer = 9;
+    let timer = 1;
     let win = 1;
-    let lose = 0;
+    let lose = 1;
+    let computerGuess;
+    let keyPress;
+    let isNineCharLog = true;
 
    
    
@@ -38,31 +45,42 @@
     document.onkeyup = function(event) {
 
         //store key press in variable
-        let k = event.key;
-
-      
-
+        keyPress = event.key;
         //computer produces a random letter everytime a key is pressed
-        let computerGuess =  letters[Math.floor(Math.random() * letters.length)];
+        computerGuess =  letters[Math.floor(Math.random() * letters.length)];
 
-        if (k === computerGuess) {
+        if (keyPress === computerGuess) {
             console.log("Yeah baby!");
-          
             winNum.innerHTML = win;
             return win++;
 
         } else {
-            console.log("damn");
-              //prints out userguess in the guesses left span tag
-              let userGuess = document.createElement('span');
-             let guessesLeft = document.getElementById('guessesLeft');
-            userGuess.textContent = k;
-            let newWords = k + ', ';
-            guessesLeft.appendChild(userGuess);
-            userGuess.innerHTML = newWords;
-            lose++;
-            timer--;
+            console.log("Damn");
+
+                if (isNineCharLog) {
+                    //prints out userguess in the guesses left span tag
+                    let userGuess = document.createElement('span');
+                    let guessesLeft = document.getElementById('guessesLeft');
+                    guessesLeft.appendChild(userGuess);
+
+                    //print out the text of the letter in this new span I created
+                    let newLetter = keyPress + ', ';
+                    userGuess.textContent = newLetter;
+                    return newLetter;
+                    timer++;
+   
+                } 
+                
+            }
+            
+
+        if (timer == 2) {
+            loseNum.innerHTML = lose;
+            return lose++;
+            // empty out div
         }
+
+    
 
       
       };

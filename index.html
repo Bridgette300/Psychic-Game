@@ -23,15 +23,16 @@
 
     let letters = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
-    let userGuess = document.createElement('span');
-    let guessesLeft = document.getElementById('guessesLeft');
-    let userKey = userGuess.keypress
+    let winNum = document.createElement('span');
+            let winPoints = document.getElementById('win-point');
+            winPoints.appendChild(winNum);
+ 
 
     let timer = 9;
-    let win = 0;
+    let win = 1;
     let lose = 0;
 
-    guessesLeft.appendChild(userGuess);
+   
    
    //event occurs when a key is pressed
     document.onkeyup = function(event) {
@@ -46,17 +47,18 @@
 
         if (k === computerGuess) {
             console.log("Yeah baby!");
-            let winNum = document.createElement('span');
-            let winPoints = document.getElementById('win-point');
-            winPoints.appendChild(winNum);
+          
             winNum.innerHTML = win;
             return win++;
 
         } else {
             console.log("damn");
               //prints out userguess in the guesses left span tag
+              let userGuess = document.createElement('span');
+             let guessesLeft = document.getElementById('guessesLeft');
             userGuess.textContent = k;
             let newWords = k + ', ';
+            guessesLeft.appendChild(userGuess);
             userGuess.innerHTML = newWords;
             lose++;
             timer--;

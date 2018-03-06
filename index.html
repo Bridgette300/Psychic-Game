@@ -22,57 +22,64 @@
 // create an array that consists of all the letters in the alphabet
 
     let letters = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-
-    let winNum = document.createElement('span');
-            let winPoints = document.getElementById('win-point');
-            winPoints.appendChild(winNum);
-
-            let loseNum = document.createElement('span');
-            let losePoints = document.getElementById('lose-point');
-            losePoints.appendChild(loseNum);          
- 
-
-    let timer = 1;
+    let timer = 9;
     let win = 1;
     let lose = 1;
     let computerGuess;
     let keyPress;
-    let isNineCharLog = true;
+    let remainingGuesses = [];
+   // let isNineCharLog = true;
+    
+    
+    
+    let winNum = document.createElement('span');
+    let winPoints = document.getElementById('win-point');
+    winPoints.appendChild(winNum);
 
-   
-   
-   //event occurs when a key is pressed
+    let loseNum = document.createElement('span');
+    let losePoints = document.getElementById('lose-point');
+    losePoints.appendChild(loseNum);          
+                  
+
+    //event occurs when a key is pressed
     document.onkeyup = function(event) {
 
         //store key press in variable
         keyPress = event.key;
         //computer produces a random letter everytime a key is pressed
         computerGuess =  letters[Math.floor(Math.random() * letters.length)];
-
+        //push user guess to array
+        remainingGuesses.push(keyPress);
         if (keyPress === computerGuess) {
+            return win++;
             console.log("Yeah baby!");
             winNum.innerHTML = win;
-            return win++;
+            timer = 9;
+            remainingGuesses.length = 0;
+           
 
-        } else {
-            console.log("Damn");
+        } else  if (keyPress !== computerGuess) {
+            console.log("Damn, wrong one");
+            //prints out userguess in the guesses left span tag
+            let userGuess = document.createElement('span');
+            let guessesLeft = document.getElementById('guessesLeft');
+            guessesLeft.appendChild(userGuess);
 
-                if (isNineCharLog) {
-                    //prints out userguess in the guesses left span tag
-                    let userGuess = document.createElement('span');
-                    let guessesLeft = document.getElementById('guessesLeft');
-                    guessesLeft.appendChild(userGuess);
+            //print out the text of the letter in this new span I created
+            let newLetter = keyPress + ', ';
+            userGuess.textContent = newLetter;
+            return newLetter;
+            timer--;
 
-                    //print out the text of the letter in this new span I created
-                    let newLetter = keyPress + ', ';
-                    userGuess.textContent = newLetter;
-                    return newLetter;
-                    timer++;
-   
-                } 
-                
-            }
+        } else if (remainingGuesses = 0) {
+            return lose++;
+            loseNum.innerHTML = lose;
+            timer = 9;
+            remainingGuesses.length = 0;
+        }
             
+            
+             
 
         if (timer == 2) {
             loseNum.innerHTML = lose;

@@ -14,7 +14,7 @@
         <p>Guess what letter I'm thinking of</p>
         <p id="win-point">Wins: </p>
         <p id="lose-point">Losses: </p>
-        <p>Guesses Left: </p>
+        <p id="guesses-left">Guesses Left: </p>
         <p id="guessesLeft">Your guesses so far: </p>
     </div>
 
@@ -24,12 +24,14 @@
     let letters = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     let timer = 9;
     let win = 1;
-    let lose = 1;
+    let lose = 0;
     let computerGuess;
     let keyPress;
     let remainingGuesses = [];
    // let isNineCharLog = true;
     
+      //computer produces a random letter everytime a key is pressed
+      computerGuess =  letters[Math.floor(Math.random() * letters.length)];
     
     
     let winNum = document.createElement('span');
@@ -38,7 +40,13 @@
 
     let loseNum = document.createElement('span');
     let losePoints = document.getElementById('lose-point');
-    losePoints.appendChild(loseNum);          
+    losePoints.appendChild(loseNum);         
+
+    let guessNum = document.createElement('span');
+    let guessPoints = document.getElementById('guesses-left');
+    guessPoints.appendChild(guessNum);   
+    guessNum.textContent = timer; 
+
                   
 
     //event occurs when a key is pressed
@@ -46,19 +54,20 @@
 
         //store key press in variable
         keyPress = event.key;
-        //computer produces a random letter everytime a key is pressed
-        computerGuess =  letters[Math.floor(Math.random() * letters.length)];
+      
         //push user guess to array
         remainingGuesses.push(keyPress);
         if (keyPress === computerGuess) {
-            return win++;
+            
             console.log("Yeah baby!");
             winNum.innerHTML = win;
             timer = 9;
             remainingGuesses.length = 0;
+            return win++;
            
 
-        } else  if (keyPress !== computerGuess) {
+        } 
+        else {
             console.log("Damn, wrong one");
             //prints out userguess in the guesses left span tag
             let userGuess = document.createElement('span');
@@ -68,25 +77,25 @@
             //print out the text of the letter in this new span I created
             let newLetter = keyPress + ', ';
             userGuess.textContent = newLetter;
-            return newLetter;
             timer--;
+            guessNum.textContent = timer;
+            
+            
 
-        } else if (remainingGuesses = 0) {
-            return lose++;
+        } 
+        
+        if (timer == 0) {
+           
+            lose++;           
             loseNum.innerHTML = lose;
             timer = 9;
             remainingGuesses.length = 0;
+            
         }
             
             
-             
 
-        if (timer == 2) {
-            loseNum.innerHTML = lose;
-            return lose++;
-            // empty out div
-        }
-
+        return true;
     
 
       

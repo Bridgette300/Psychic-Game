@@ -27,8 +27,7 @@
     let lose = 0;
     let computerGuess;
     let keyPress;
-    let remainingGuesses = [];
-   // let isNineCharLog = true;
+
     
       //computer produces a random letter everytime a key is pressed
       computerGuess =  letters[Math.floor(Math.random() * letters.length)];
@@ -62,7 +61,7 @@
             console.log("Yeah baby!");
             winNum.innerHTML = win;
             timer = 9;
-            remainingGuesses.length = 0;
+          
             return win++;
            
 

@@ -5,116 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Psychic Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <script src="./assets/javascript/game.js"></script>
   
 </head>
 <body>
-    
-    <h1>The Psychic Game</h1>
-    <div>
-        <p>Guess what letter I'm thinking of</p>
-        <p id="win-point">Wins: </p>
-        <p id="lose-point">Losses: </p>
-        <p id="guesses-left">Guesses Left: </p>
-        <p id="guessesLeft">Your guesses so far: </p>
+    <div class="container">
+    <h1 class="header1">The Psychic Game</h1>
+    <hr>
+    <p  class="textStyle whiteColor">Welcome to the Psychic Game! Your goal is to guess the letter the computer is thinking of. Press any letter on the keyboard to start the game! Good luck!</p>
+    <div class="row">
+    <div class="leftcolumn textStyle">
+       <p><strong>Score</strong></p>
+       <hr>
+        <p><strong>Wins:</strong> <span id="win-point"><!-- win number --></span></p>
+        <p><strong>Losses:</strong> <span id="lose-point"><!-- lose number --></span></p>
+     
     </div>
-
-    <script type="text/javascript">
-// create an array that consists of all the letters in the alphabet
-
-    let letters = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-    let timer = 9;
-    let win = 1;
-    let lose = 0;
-    let computerGuess;
-    let keyPress;
-
-    
-      //computer produces a random letter everytime a key is pressed
-      computerGuess =  letters[Math.floor(Math.random() * letters.length)];
-    
-    
-    let winNum = document.createElement('span');
-    let winPoints = document.getElementById('win-point');
-    winPoints.appendChild(winNum);
-
-    let loseNum = document.createElement('span');
-    let losePoints = document.getElementById('lose-point');
-    losePoints.appendChild(loseNum);         
-
-    let guessNum = document.createElement('span');
-    let guessPoints = document.getElementById('guesses-left');
-    guessPoints.appendChild(guessNum);   
-    guessNum.textContent = timer; 
-
-                  
-
-    //event occurs when a key is pressed
-    document.onkeyup = function(event) {
-
-        //store key press in variable
-        keyPress = event.key;
-      
-        //push user guess to array
-        remainingGuesses.push(keyPress);
-        if (keyPress === computerGuess) {
-            
-            console.log("Yeah baby!");
-            winNum.innerHTML = win;
-            timer = 9;
-          
-            return win++;
-           
-
-        } 
-        else {
-            console.log("Damn, wrong one");
-            //prints out userguess in the guesses left span tag
-            let userGuess = document.createElement('span');
-            let guessesLeft = document.getElementById('guessesLeft');
-            guessesLeft.appendChild(userGuess);
-
-            //print out the text of the letter in this new span I created
-            let newLetter = keyPress + ', ';
-            userGuess.textContent = newLetter;
-            timer--;
-            guessNum.textContent = timer;
-            
-            
-
-        } 
-        
-        if (timer == 0) {
-           
-            lose++;           
-            loseNum.innerHTML = lose;
-            timer = 9;
-            remainingGuesses.length = 0;
-            
-        }
-            
-            
-
-        return true;
-    
-
-      
-      };
-   
-// make sure the strings of the array are equal to the keyboard presses
-
-
-
-//create a variable that allows the computer to guess a random letter; for now create that letter
-
-//when user presses a letter on the keyboard, it will match up to one of the letters in the array; if the letter matches in the array, it will print on the screen. User wins. The game resets. If it doesn't it will go into the guesses so far pile;  only 9 guesses can be in there
-
-if (letters.length === 'a') {
-    console.log('You win!');
-    winCounter++;
-
-}
-
-    
-    </script>
+    <div class="rightcolumn textStyle">
+        <p><strong>Guess what letter I'm thinking of</strong></p>
+        <hr>
+        <p><strong>Left:</strong> <span id="guesses-left"><!-- # of guesses left --></span></p>
+        <p><strong>Your guesses so far:</strong> <span id="guessesSoFar"><!-- guesses so far --></span></p>
+    </div>
+</div>
+</div>
 </body>
 </html>

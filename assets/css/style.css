@@ -1,0 +1,44 @@
+body {
+    background-color: darkslateblue; 
+}
+
+.container {
+    width: 800px;
+    margin: 0 auto;
+}
+.header1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 44px;
+    color: white;
+    text-align: center;
+}
+.leftcolumn {
+    padding: 10px;
+    margin-right: 50px;
+    background-color: beige;
+    width: 25%;
+}
+.rightcolumn {
+    padding: 10px;
+    background-color: beige;
+    width: 50%;
+}
+.row {
+    display: flex;
+    justify-content: center;
+}
+.textStyle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.whiteColor {
+    color: white;
+    padding: 10px;
+}
+
+
+
+
+
